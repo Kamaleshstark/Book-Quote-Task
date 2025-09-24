@@ -31,7 +31,6 @@ function App() {
     setCurrentIndex(index);
   }, []);
 
-  // Swipe handlers
   const { handleTouchStart, handleTouchEnd } = useSwipe({
     onSwipeUp: nextQuote,
     onSwipeDown: prevQuote,
@@ -39,7 +38,6 @@ function App() {
     onSwipeRight: prevQuote,
   });
 
-  // Auto-play
   useEffect(() => {
     if (!isAutoplay) return;
 
@@ -54,7 +52,6 @@ function App() {
     return () => clearInterval(timer);
   }, [currentIndex, isAutoplay, quotesData.length, nextQuote]);
 
-  // Like handler
   const handleLike = () => {
     setQuotesData(prev => prev.map((quote, index) => 
       index === currentIndex 
@@ -67,12 +64,10 @@ function App() {
     ));
   };
 
-  // Share handler
   const handleShare = () => {
     setShareModalOpen(true);
   };
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       switch (e.key) {

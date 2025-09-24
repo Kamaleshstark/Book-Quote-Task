@@ -30,9 +30,7 @@ export const useSwipe = (config: SwipeConfig) => {
     const deltaX = touchStart.x - touchEnd.x;
     const deltaY = touchStart.y - touchEnd.y;
 
-    // Determine swipe direction
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      // Horizontal swipe
       if (Math.abs(deltaX) > threshold) {
         if (deltaX > 0) {
           config.onSwipeLeft?.();
@@ -41,7 +39,6 @@ export const useSwipe = (config: SwipeConfig) => {
         }
       }
     } else {
-      // Vertical swipe
       if (Math.abs(deltaY) > threshold) {
         if (deltaY > 0) {
           config.onSwipeUp?.();
